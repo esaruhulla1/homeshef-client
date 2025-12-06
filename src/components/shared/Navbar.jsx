@@ -45,7 +45,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="flex items-center gap-2  bg-red-600 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 shadow-lg shadow-red-200 dark:shadow-none group" href="#">
+                    <a className="flex items-center gap-2  bg-red-500 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 shadow-lg shadow-red-200 dark:shadow-none group" href="#">
                         <span>Sign In</span>
                         <span><FaArrowRight /></span>
                     </a>
