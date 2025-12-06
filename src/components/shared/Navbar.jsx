@@ -1,15 +1,22 @@
 import React from 'react';
+import { FaArrowRight } from 'react-icons/fa';
 import { NavLink } from 'react-router';
 
 const Navbar = () => {
+    // const linkClass = "hover:bg-transparent focus:bg-transparent active:bg-transparent";
+    const linkClass = "hover:bg-transparent hover:underline hover:underline-offset-3 hover:decoration-red-400  focus:bg-transparent active:text-red-600";
+
+    
     const links =
         <>
-            <li><NavLink to="/">Home</NavLink></li>
+            <li ><NavLink to="/" className={linkClass}>Home</NavLink></li>
+            <li><NavLink to="/meals" className={linkClass}>Meals</NavLink></li>
+            <li><NavLink to="/dashboard" className={linkClass}>Dashboard</NavLink></li>
         </>
 
     return (
-        <nav>
-            <div className="container mx-auto navbar bg-base-100 shadow-sm">
+        <nav className='bg-base-100 shadow-sm'>
+            <div className="container mx-auto navbar ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -24,7 +31,11 @@ const Navbar = () => {
 
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">HomeShef</a>
+                    {/* <a className="cursor-pointer btn-ghost text-xl">HomeShef</a> */}
+                    <a className="text-3xl font-bold tracking-tight" href="#">
+                        <span className="">Home</span><span class="text-red-500">Shef</span>
+                    </a>
+
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -34,7 +45,10 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    <a className="flex items-center gap-2  bg-red-600 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 shadow-lg shadow-red-200 dark:shadow-none group" href="#">
+                        <span>Sign In</span>
+                        <span><FaArrowRight /></span>
+                    </a>
                 </div>
             </div>
         </nav>

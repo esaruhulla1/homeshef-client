@@ -1,2 +1,31 @@
 @import "tailwindcss";
-@plugin "daisyui";
+
+/* theme */
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  /* --color-accent */
+  /* --color-primary: blue; */
+  /* --color-secondary: teal; */
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+    /* default: true; */
+  --color-primary: purple;
+  --color-secondary: yellow;
+}
+
+@plugin "daisyui" {
+  themes: ["light", "dark"];
+}
+
+
+/* class */
+
+.active{
+    color: red;
+    /* text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: red; */
+}
