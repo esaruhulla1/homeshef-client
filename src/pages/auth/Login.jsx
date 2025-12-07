@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate, } from "react-router";
 import { FaGoogle, FaFacebookF, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { BsFacebook } from "react-icons/bs";
+
+
 
 export default function Login() {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -16,9 +21,9 @@ export default function Login() {
         />
 
         {/* Back Button */}
-        <button className="absolute top-4 left-4 flex items-center space-x-2 bg-black/50 text-white px-3 py-2 rounded-md">
+        <button onClick={() => navigate("/")} className="absolute top-4 left-4 flex items-center space-x-2 bg-red-600/60 text-white px-3 py-2 rounded-md">
           <span className="text-xl">←</span>
-          <span>Back</span>
+          <span>Back To Home</span>
         </button>
       </div>
 
@@ -28,14 +33,15 @@ export default function Login() {
           <h1 className="text-4xl font-bold mb-6">Login</h1>
 
           {/* Social Login Buttons */}
-          <div className="flex items-center gap-4 mb-6">
-            <button className="w-1/2 border rounded-md py-2 flex items-center justify-center gap-2 text-gray-700">
-              <FaGoogle className="text-xl" />
+          <div className="flex flex-col  lg:flex-row items-center gap-4 mb-6">
+            <button className="w-full lg:w-1/2 border border-[#fadada] rounded-md py-2 flex items-center justify-center gap-2 text-gray-700">
+              <FcGoogle className="text-xl " ></FcGoogle>
               <span>Sign in with Google</span>
             </button>
 
-            <button className="w-1/2 border rounded-md py-2 flex items-center justify-center gap-2 text-gray-700">
-              <FaFacebookF className="text-xl" />
+            <button className="w-full lg:w-1/2 border border-[#fadada] rounded-md py-2 flex items-center justify-center gap-2 text-gray-700">
+              {/* <FaFacebookF className="text-xl text-[#0866ff]" /> */}
+              <BsFacebook className="text-xl text-[#0866ff]" />
               <span>Sign in with Facebook</span>
             </button>
           </div>
@@ -54,7 +60,7 @@ export default function Login() {
               <input
                 type="email"
                 placeholder="Enter Your Email"
-                className="w-full mt-1 p-3 border rounded-md bg-red-50 outline-none"
+                className="w-full mt-1 p-3 border border-[#fadada] focus:border-[#f39993] rounded-md bg-red-50 outline-none"
               />
             </div>
 
@@ -64,7 +70,7 @@ export default function Login() {
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter Your Password"
-                  className="w-full mt-1 p-3 border rounded-md bg-red-50 outline-none"
+                  className="w-full mt-1 p-3 border border-[#fadada] focus:border-[#f39993] rounded-md bg-red-50 outline-none"
                 />
 
                 {/* Password Toggle */}
@@ -101,7 +107,7 @@ export default function Login() {
           {/* Signup Link */}
           <p className="text-center mt-6 text-gray-700">
             Don’t Have An Account?{" "}
-            <Link to="/signup" className="text-red-500 font-semibold">
+            <Link to="/register" className="text-red-500 font-semibold">
               Signup
             </Link>
           </p>
