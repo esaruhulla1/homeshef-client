@@ -4,10 +4,10 @@ import { FaPlay, FaShoppingCart, FaClock } from "react-icons/fa";
 
 export default function Banner() {
     return (
-        <section className="w-full  py-20">
+        <section className="w-full  py-20 bg-[#fef5f5]">
             <div className="container mx-auto  grid grid-cols-1 md:grid-cols-2  items-center px-6">
                 {/* LEFT CONTENT */}
-                <div className="space-y-6  ">
+                <div className="space-y-8  ">
                     {/* Top badge */}
                     <div className="inline-flex items-center gap-2 bg-red-50 px-4 py-1.5 rounded-full text-sm font-medium text-red-600">
                         More than Faster <FaPlay className="text-xs" />
@@ -25,24 +25,24 @@ export default function Banner() {
                     </p>
 
                     {/* Buttons */}
-                    <div className="flex gap-4 pt-4">
+                    <div className="flex gap-4 pt-20">
                         <button className="bg-red-500 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-md hover:bg-red-600 transition">
                             Order Now
                         </button>
 
-                        <button className="bg-white border border-gray-300 px-6 py-3 rounded-full text-lg font-semibold shadow hover:shadow-md transition flex items-center gap-2">
+                        <button className="z-10 bg-white border border-gray-300 px-6 py-3 rounded-full text-lg font-semibold shadow hover:shadow-md transition flex items-center gap-2">
                             <FaPlay className="text-red-500" /> Order Process
                         </button>
                     </div>
                 </div>
 
                 {/* RIGHT IMAGE SECTION */}
-                <div className=" relative flex justify-center ">
+                <div className=" relative flex justify-center pr-0 lg:pr-20">
                     {/* chef image */}
                     <img
                         src="/banner_chef.png"
                         alt="woman holding salad"
-                        className="w-[55%] z-10 "
+                        className="w-[50%] z-10 "
                     />
 
                     {/* Red background shape */}
@@ -60,7 +60,7 @@ export default function Banner() {
                     </div>
 
                     {/* Delivery Card */}
-                    <div className="absolute top-100 -right-8 bg-white shadow-md rounded-xl p-3 flex items-center gap-3 w-36">
+                    <div className="absolute top-100 right-4 bg-white shadow-md rounded-xl p-3 flex items-center gap-3 w-36">
                         <FaClock className="text-green-500 text-xl" />
                         <div>
                             <p className="font-semibold text-gray-700 text-sm">Delivery</p>

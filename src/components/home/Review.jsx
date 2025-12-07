@@ -3,10 +3,10 @@ import { FaArrowLeft, FaArrowRight, FaUtensils } from "react-icons/fa";
 
 export default function Review() {
     return (
-        <section className="w-full  py-20 font-sans">
+        <section className="w-full  py-20 pt-35 font-sans">
             <div className="container mx-auto px-6">
                 {/* Top Section */}
-                <div className="flex justify-between gap-10 items-center  ">
+                <div className="flex flex-col md:flex-row justify-between gap-10 items-center  ">
                     {/* Text Content */}
                     <div className="">
                         <span className="flex items-center gap-2 text-sm font-medium text-[#E49A3B]">
@@ -24,7 +24,7 @@ export default function Review() {
                     </div>
 
                     {/* Rating Summary */}
-                    <div className=" bg-white shadow-lg  rounded-2xl p-6 mr-20 w-[400px]">
+                    <div className=" bg-white shadow-lg  rounded-2xl p-6 mr-20 w-full text-center mx-auto  md:w-[400px]">
                         <div className="flex justify-between">
                             <div>
                                 <h3 className="text-4xl font-bold text-gray-900">4.9</h3>
@@ -130,7 +130,7 @@ export default function Review() {
                 </div>
 
                 {/* Bottom CTA */}
-                <div className="mt-24 bg-white rounded-3xl  p-7 py-15 shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="mt-24 bg-[#fef5f5] rounded-3xl  p-7 py-15 shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
                     <div>
                         <h2 className="text-3xl font-bold text-gray-900">
                             Join thousands of happy foodies

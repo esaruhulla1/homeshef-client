@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaArrowRight } from 'react-icons/fa';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 
 const Navbar = () => {
     // const linkClass = "hover:bg-transparent focus:bg-transparent active:bg-transparent";
@@ -33,7 +33,7 @@ const Navbar = () => {
                     </div>
                     {/* <a className="cursor-pointer btn-ghost text-xl">HomeShef</a> */}
                     <a className="text-3xl font-bold tracking-tight" href="#">
-                        <span className="">Home</span><span class="text-red-500">Shef</span>
+                        <span className="">Home</span><span className="text-red-500">Shef</span>
                     </a>
 
                 </div>
@@ -45,10 +45,10 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="flex items-center gap-2  bg-red-500 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 shadow-lg shadow-red-200 dark:shadow-none group" href="#">
+                    <Link to={"/login"} className="flex items-center gap-2  bg-red-500 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 shadow-lg shadow-red-200 dark:shadow-none group" href="#">
                         <span>Sign In</span>
                         <span><FaArrowRight /></span>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </nav>
