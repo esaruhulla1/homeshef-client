@@ -4,7 +4,7 @@ import { FaPlay, FaShoppingCart, FaClock } from "react-icons/fa";
 
 export default function Banner() {
     return (
-        <section className="w-full bg-white py-20">
+        <section className="w-full  py-20">
             <div className="container mx-auto  grid grid-cols-1 md:grid-cols-2  items-center px-6">
                 {/* LEFT CONTENT */}
                 <div className="space-y-6  ">

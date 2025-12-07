@@ -3,17 +3,19 @@
 /* theme */
 @plugin "daisyui/theme" {
   name: "light";
-  default: true;
-  /* --color-accent */
-  /* --color-primary: blue; */
-  /* --color-secondary: teal; */
+  /* default: true; */
+
+  /* Button, link, highlight */
+  /* --color-primary: #EF4444; */
+
+
 }
 
 @plugin "daisyui/theme" {
   name: "dark";
-    /* default: true; */
-  --color-primary: purple;
-  --color-secondary: yellow;
+  /* default: true; */
+  /* --color-primary: purple; */
+  /* --color-secondary: yellow; */
 }
 
 @plugin "daisyui" {
@@ -23,9 +25,30 @@
 
 /* class */
 
-.active{
-    color: red;
-    /* text-decoration: underline;
+.active {
+  color: red;
+  /* text-decoration: underline;
     text-underline-offset: 4px;
     text-decoration-color: red; */
+}
+
+
+
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.material-symbols-outlined.unfilled {
+  font-variation-settings: 'FILL' 0;
+}
+
+/* Hide scrollbar for clean carousel look */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
