@@ -11,14 +11,14 @@ const Review2 = () => {
                         {/* Text Content */}
                         <div className=" ">
                             <div className="flex   items-center gap-2 text-sm font-medium text-[#E49A3B]">
-                                <h3 className="text-xl mx-auto ">🧡 WALL OF LOVE</h3> 
+                                <p className="text-red-500 font-medium mb-2 mx-auto">WALL OF LOVE</p>
                             </div>
 
                             <h2 className="text-4xl font-bold mt-3 text-gray-900">
                                 What Our Happy  Customers Say
                             </h2>
 
-                            <p className="text-gray-500 mt-4 text-base max-w-md leading-relaxed">
+                            <p className="text-gray-500 mx-auto mt-4 text-base max-w-md leading-relaxed">
                                 Discover why thousands of food lovers trust us for their daily meals. Real
                                 reviews from real customers.
                             </p>

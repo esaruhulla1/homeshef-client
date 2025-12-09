@@ -1,15 +1,75 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { FaEye, FaEyeSlash, FaFacebookF, FaGoogle } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
 import { FiUpload } from "react-icons/fi";
-
+import { useForm } from "react-hook-form";
+import { AuthContext } from "../../Context/AuthContext";
 
 export default function Register() {
     const navigate = useNavigate();
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [uploading, setUploading] = useState(false);
+
+    const image_API_URL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_host_key}`;
+
+    // ⬇️ Form Submit
+    const onSubmit = async (data) => {
+        const { email, password, confirmPassword, name, address, image } = data;
+
+        // ❌ Confirm password check
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return;
+        }
+
+        try {
+            // ========== 1) UPLOAD IMAGE TO IMGBB ==========
+            let imageUrl = "";
+            if (image && image[0]) {
+                const formData = new FormData();
+                formData.append("image", image[0]);
+
+                setUploading(true);
+
+                const res = await fetch(image_API_URL, {
+                    method: "POST",
+                    body: formData,
+                });
+
+                const imgData = await res.json();
+                setUploading(false);
+
+                if (imgData.success) {
+                    imageUrl = imgData.data.url;
+                } else {
+                    alert("Image upload failed!");
+                    return;
+                }
+            }
+
+            // ========== 2) CREATE USER ==========
+            const result = await createUser(email, password);
+
+            // ========== 3) UPDATE FIREBASE PROFILE ==========
+            await updateUserProfile({
+                displayName: name,
+                photoURL: imageUrl, // ✔️ Uploaded image URL added here
+            });
+
+            console.log("User Created:", result.user);
+            reset();
+            navigate("/");
+        } catch (error) {
+            console.error("Registration Error:", error);
+        }
+    };
 
     return (
         <div className="w-full h-screen flex">
@@ -21,9 +81,10 @@ export default function Register() {
                     className="w-full h-full object-cover"
                 />
 
-                {/* Back Button */}
-                {/* <button onClick={() => navigate("/")} className="absolute top-4 left-4 flex items-center space-x-2 bg-black/50 text-white px-3 py-2 rounded-md"> */}
-                <button onClick={() => navigate("/")} className="absolute top-4 left-4 flex items-center space-x-2 bg-red-600/60 text-white px-3 py-2 rounded-md">
+                <button
+                    onClick={() => navigate("/")}
+                    className="absolute top-4 left-4 flex items-center space-x-2 bg-red-600/60 text-white px-3 py-2 rounded-md"
+                >
                     <span className="text-xl">←</span>
                     <span>Back To Home</span>
                 </button>
@@ -34,38 +95,19 @@ export default function Register() {
                 <div className="w-full max-w-md">
                     <h1 className="text-4xl font-bold mb-6">Create Account</h1>
 
-                    {/* Social Login Buttons */}
-                    <div className="flex flex-col  lg:flex-row items-center gap-4 mb-4">
-                        <button className="w-full lg:w-1/2 border border-[#fadada] rounded-md py-2 flex items-center justify-center gap-2 text-gray-700">
-                            <FcGoogle className="text-xl text-[#fa6c62]" ></FcGoogle>
-                            <span>Sign in with Google</span>
-                        </button>
+                    {/* FORM START */}
+                    <form onSubmit={handleSubmit(onSubmit)}>
 
-                        <button className="w-full lg:w-1/2 border border-[#fadada] rounded-md py-2 flex items-center justify-center gap-2 text-gray-700">
-                            {/* <FaFacebookF className="text-xl text-[#0866ff]" /> */}
-                            <BsFacebook className="text-xl text-[#0866ff]" />
-
-                            <span>Sign in with Facebook</span>
-                        </button>
-                    </div>
-
-                    {/* Divider */}
-                    <div className="flex items-center mb-4">
-                        <div className="flex-1 border-t"></div>
-                        <span className="px-3 text-gray-500">Or Use Your Email</span>
-                        <div className="flex-1 border-t"></div>
-                    </div>
-
-                    {/* Registration Form */}
-                    <form>
                         {/* Name */}
                         <div className="mb-2">
                             <label className="text-gray-600">Full Name</label>
                             <input
                                 type="text"
                                 placeholder="Enter Your Name"
+                                {...register("name", { required: "Name is required" })}
                                 className="w-full mt-1 p-2 border border-[#fadada] focus:border-[#f39993] rounded-md bg-red-50 outline-none"
                             />
+                            {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
                         </div>
 
                         {/* Email */}
@@ -74,28 +116,20 @@ export default function Register() {
                             <input
                                 type="email"
                                 placeholder="Enter Your Email"
-                                className="w-full mt-1 p-2 border  border-[#fadada] focus:border-[#f39993] rounded-md bg-red-50 outline-none"
+                                {...register("email", { required: "Email is required" })}
+                                className="w-full mt-1 p-2 border border-[#fadada] focus:border-[#f39993] rounded-md bg-red-50 outline-none"
                             />
+                            {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
                         </div>
 
                         {/* Profile Image */}
-                        {/* <div className="mb-2 relative">
-                            <label className="text-gray-600">Profile Image</label>
-                            <input
-
-                                type="file"
-                                className="w-full mt-1 p-2 border border-[#fadada] focus:border-[#f39993] rounded-md bg-red-50 outline-none"
-                            />
-                            <FiUpload className="absolute right-3 top-9 text-gray-600 text-xl cursor-pointer" />
-                        </div> */}
                         <div className="mb-2">
                             <label className="text-gray-600">Profile Image</label>
 
-                            <label className="w-full mt-1 p-2 border border-[#fadada] focus:border-[#f39993] bg-red-50 rounded-md flex items-center gap-2 cursor-pointer">
-                                <FiUpload className=" text-xl ml-2 hover:text-green-500" />
-                                <span className="text-gray-500 ml-2">Upload Profile Image</span>
-
-                                <input type="file" className="hidden" />
+                            <label className="w-full mt-1 p-2 border border-[#fadada] bg-red-50 rounded-md flex items-center gap-2 cursor-pointer">
+                                <FiUpload className="text-xl ml-2" />
+                                <span className="text-gray-500 ml-2">{uploading ? "Uploading..." : "Upload Profile Image"}</span>
+                                <input type="file" {...register("image")} className="hidden" />
                             </label>
                         </div>
 
@@ -104,9 +138,11 @@ export default function Register() {
                             <label className="text-gray-600">Address</label>
                             <textarea
                                 placeholder="Enter Your Address"
-                                className="w-full mt-1 p-2 border border-[#fadada] focus:border-[#f39993] rounded-md bg-red-50 outline-none"
                                 rows="1"
+                                {...register("address", { required: "Address is required" })}
+                                className="w-full mt-1 p-2 border border-[#fadada] focus:border-[#f39993] rounded-md bg-red-50 outline-none"
                             ></textarea>
+                            {errors.address && <p className="text-red-500 text-sm">{errors.address.message}</p>}
                         </div>
 
                         {/* Password */}
@@ -116,6 +152,13 @@ export default function Register() {
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     placeholder="Enter Password"
+                                    {...register("password", {
+                                        required: "Password is required",
+                                        minLength: {
+                                            value: 6,
+                                            message: "Password must be at least 6 characters",
+                                        },
+                                    })}
                                     className="w-full mt-1 p-2 border border-[#fadada] focus:border-[#f39993] rounded-md bg-red-50 outline-none"
                                 />
                                 <span
@@ -125,6 +168,7 @@ export default function Register() {
                                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                                 </span>
                             </div>
+                            {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
                         </div>
 
                         {/* Confirm Password */}
@@ -134,6 +178,9 @@ export default function Register() {
                                 <input
                                     type={showConfirmPassword ? "text" : "password"}
                                     placeholder="Confirm Password"
+                                    {...register("confirmPassword", {
+                                        required: "Please confirm your password",
+                                    })}
                                     className="w-full mt-1 p-2 border border-[#fadada] focus:border-[#f39993] rounded-md bg-red-50 outline-none"
                                 />
                                 <span
@@ -143,14 +190,20 @@ export default function Register() {
                                     {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                                 </span>
                             </div>
+                            {errors.confirmPassword && (
+                                <p className="text-red-500 text-sm">{errors.confirmPassword.message}</p>
+                            )}
                         </div>
 
-                        {/* agree Privacy Policy*/}
+                        {/* Privacy Policy */}
                         <div>
                             <label className="flex items-center pb-3 gap-2">
-                                <input type="checkbox" className="accent-red-500" />
+                                <input type="checkbox" className="accent-red-500" {...register("agree", { required: true })} />
                                 I agree to the Terms of Service and Privacy Policy
                             </label>
+                            {errors.agree && (
+                                <p className="text-red-500 text-sm">You must agree before submitting</p>
+                            )}
                         </div>
 
                         {/* Register Button */}
@@ -158,7 +211,7 @@ export default function Register() {
                             type="submit"
                             className="w-full bg-red-500 text-white py-3 rounded-md text-lg hover:bg-red-600"
                         >
-                            Create Account
+                            {uploading ? "Uploading..." : "Create Account"}
                         </button>
                     </form>
 
