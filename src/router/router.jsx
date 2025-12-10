@@ -6,6 +6,7 @@ import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import Meals from "../pages/meals/Meals";
 import MealsDetails from "../pages/mealsDetails/MealsDetails";
+import PrivateRoute from "../pages/mealsDetails/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/meal/:id",
-        Component: MealsDetails
+        element: <PrivateRoute><MealsDetails></MealsDetails></PrivateRoute> 
       }
     ]
   },

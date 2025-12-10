@@ -42,7 +42,7 @@ const MealsDetails = () => {
                     <img
                         src={meal.foodImage}
                         alt={meal.foodName}
-                        className="w-full h-[60vh] rounded-2xl shadow-lg"
+                        className="w-full md:h-[60vh] rounded-2xl shadow-lg"
                     />
                 </div>
 
