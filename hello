@@ -35,3 +35,53 @@ const products = [
     { id: 7, title: "Double Patty", weight: "180 g", price: "$4.20", image: "https://compiled-production-assets.homechef.com/cdn-cgi/image/class=rounded-lg%20lazyload%20complete-opacity%20static,f=auto,q=75/assets/landing_pages/explore-the-menu/jalapeno-popper-chicken-2ca73501417fb943dd79673483290fa3f25ceefd12b05c2966a9c15abb1cd91d.jpg" },
     { id: 8, title: "Classic Burger", weight: "140 g", price: "$2.40", image: "https://compiled-production-assets.homechef.com/cdn-cgi/image/class=rounded-lg%20lazyload%20complete-opacity%20static,f=auto,q=75/assets/landing_pages/explore-the-menu/sirloin-steak-and-bacon-demi-e33ecae3c42addc7b0ee7b452d0b663241dde657805d9a7cdc16f499b175eb8e.jpg" },
 ];
+
+
+
+[
+  {
+    
+    "foodId": "6938e14b7c78465d1b202b92",
+    "reviewerName": "Ariana Sultana",
+    "reviewerImage": "https://images.unsplash.com/photo-1607746882042-944635dfe10e",
+    "rating": 5,
+    "comment": "The food was delicious! Perfect taste and fast delivery.",
+    "date": "2025-12-10T12:30:00Z"
+  },
+  {
+    
+    "foodId": "6938e14b7c78465d1b202b92",
+    "reviewerName": "Kamrul Hasan",
+    "reviewerImage": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+    "rating": 4,
+    "comment": "Good quality and fresh ingredients. Recommended!",
+    "date": "2025-12-09T15:45:00Z"
+  },
+  {
+    
+    "foodId": "6938e14b7c78465d1b202b92",
+    "reviewerName": "Sara Rahman",
+    "reviewerImage": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
+    "rating": 5,
+    "comment": "Excellent! Loved the flavor and packaging.",
+    "date": "2025-12-08T10:20:00Z"
+  },
+  {
+    
+    "foodId": "6759c1f4e12ab34567890abf",
+    "reviewerName": "Jewel Ahmed",
+    "reviewerImage": "https://images.unsplash.com/photo-1595152772835-219674b2a8a6",
+    "rating": 3,
+    "comment": "Taste was fine, but delivery took longer than expected.",
+    "date": "2025-12-07T18:10:00Z"
+  },
+  {
+    
+    "foodId": "6938e14b7c78465d1b202b91",
+    "reviewerName": "Mariam Akter",
+    "reviewerImage": "https://images.unsplash.com/photo-1544723795-3fb6469f5b39",
+    "rating": 4,
+    "comment": "Really liked it! Will order again soon.",
+    "date": "2025-12-06T09:00:00Z"
+  }
+]
