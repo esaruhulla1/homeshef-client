@@ -8,6 +8,8 @@ import Meals from "../pages/meals/Meals";
 import MealsDetails from "../pages/mealsDetails/MealsDetails";
 import PrivateRoute from "../router/PrivateRoute";
 import Order from "../pages/order/Order";
+import DashboardLayout from "../layouts/DashboardLayout";
+import MyProfile from "../pages/dashboard/profile/MyProfile";
 
 export const router = createBrowserRouter([
   {
@@ -46,5 +48,15 @@ export const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: "/dashboard",
+    Component: DashboardLayout,
+    children: [
+      {
+        index: true,
+        Component: MyProfile
+      }
+    ]
+  }
 
 ]);
