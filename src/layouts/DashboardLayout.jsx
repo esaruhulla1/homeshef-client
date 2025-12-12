@@ -60,7 +60,7 @@ const DashboardLayout = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to={"/"}  className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Favorite">
+                                <Link to={"/dashboard/my-favorite"}  className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Favorite">
                                     {/* Favorite icon */}
                                     <MdOutlineFavoriteBorder />
                                     <span className="is-drawer-close:hidden">My Favorite</span>

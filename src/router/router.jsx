@@ -11,6 +11,7 @@ import Order from "../pages/order/Order";
 import DashboardLayout from "../layouts/DashboardLayout";
 import MyProfile from "../pages/dashboard/profile/MyProfile";
 import MyReview from "../pages/dashboard/myReview/MyReview";
+import MyFavorite from "../pages/dashboard/myFavorite/MyFavorite";
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/my-review",
         element: <MyReview></MyReview>
+      },
+      {
+        path: "/dashboard/my-favorite",
+        element: <MyFavorite></MyFavorite>
       }
     ]
   }
