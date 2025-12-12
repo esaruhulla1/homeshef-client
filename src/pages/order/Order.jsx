@@ -48,7 +48,7 @@ export default function Order() {
                     chefId: meal.chefId,
                     userEmail: user?.email,
                     userAddress: address,
-                    paymentStatus: "Pending",
+                    paymentStatus: "pending",
                     orderStatus: "pending",
                     orderTime: new Date().toISOString(),
                 };
