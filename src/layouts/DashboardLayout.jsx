@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router';
+import { Link, NavLink, Outlet } from 'react-router';
 import { CgProfile } from "react-icons/cg";
 import { TbTruckDelivery } from "react-icons/tb";
 import { MdOutlineReviews } from "react-icons/md";
@@ -38,33 +38,33 @@ const DashboardLayout = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to={"/"}  className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Profile">
+                                <Link to={"/dashboard"}  className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Profile">
                                     {/* profile icon */}
                                     <CgProfile />
                                     <span className="is-drawer-close:hidden">MY Profile</span>
-                                </NavLink>
+                                </Link>
                             </li>
                             <li>
-                                <NavLink to={"/"}  className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Order">
+                                <Link to={"/"}  className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Order">
                                     {/* order icon */}
                                     <TbTruckDelivery />
                                     <span className="is-drawer-close:hidden">My Order</span>
-                                </NavLink>
+                                </Link>
                             </li>
 
                             <li>
-                                <NavLink to={"/"}  className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Review">
-                                    {/* profile icon */}
+                                <Link to={"/dashboard/my-review"}  className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Review">
+                                    {/* Review icon */}
                                     <MdOutlineReviews />
                                     <span className="is-drawer-close:hidden">My Review</span>
-                                </NavLink>
+                                </Link>
                             </li>
                             <li>
-                                <NavLink to={"/"}  className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Favorite">
-                                    {/* profile icon */}
+                                <Link to={"/"}  className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Favorite">
+                                    {/* Favorite icon */}
                                     <MdOutlineFavoriteBorder />
                                     <span className="is-drawer-close:hidden">My Favorite</span>
-                                </NavLink>
+                                </Link>
                             </li>
                             
                             <li>

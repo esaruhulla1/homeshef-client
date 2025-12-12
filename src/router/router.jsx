@@ -10,6 +10,7 @@ import PrivateRoute from "../router/PrivateRoute";
 import Order from "../pages/order/Order";
 import DashboardLayout from "../layouts/DashboardLayout";
 import MyProfile from "../pages/dashboard/profile/MyProfile";
+import MyReview from "../pages/dashboard/myReview/MyReview";
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: MyProfile
+      },
+      {
+        path: "/dashboard/my-review",
+        element: <MyReview></MyReview>
       }
     ]
   }

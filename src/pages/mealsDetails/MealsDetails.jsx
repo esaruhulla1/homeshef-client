@@ -7,6 +7,8 @@ import toast from "react-hot-toast";
 
 const MealsDetails = () => {
     const { user, loading } = useContext(AuthContext);
+    console.log(user);
+    
     const { id } = useParams();
     const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
@@ -46,8 +48,10 @@ const MealsDetails = () => {
 
         const reviewData = {
             foodId: id,
+            foodName: meal?.foodName,
             reviewerName: user?.displayName,
             reviewerImage: user?.photoURL,
+            reviewerEmail: user?.email,
             rating: parseInt(rating),
             comment,
             date: new Date().toISOString()
