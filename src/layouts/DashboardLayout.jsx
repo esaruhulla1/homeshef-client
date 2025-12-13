@@ -2,8 +2,11 @@ import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router';
 import { CgProfile } from "react-icons/cg";
 import { TbTruckDelivery } from "react-icons/tb";
-import { MdOutlineReviews } from "react-icons/md";
+import { MdNoMeals, MdOutlineFoodBank, MdOutlineReviews } from "react-icons/md";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
+import { GiHotMeal, GiMeal } from "react-icons/gi";
+import { LuGitPullRequestCreateArrow } from "react-icons/lu";
+
 
 const DashboardLayout = () => {
     return (
@@ -38,14 +41,14 @@ const DashboardLayout = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <Link to={"/dashboard"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Profile">
+                                <Link to={"/dashboard"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Profile">
                                     {/* profile icon */}
                                     <CgProfile />
-                                    <span className="is-drawer-close:hidden">MY Profile</span>
+                                    <span className="is-drawer-close:hidden">My Profile</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to={"/dashboard/my-order"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Order">
+                                <Link to={"/dashboard/my-order"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Order">
                                     {/* order icon */}
                                     <TbTruckDelivery />
                                     <span className="is-drawer-close:hidden">My Order</span>
@@ -53,17 +56,38 @@ const DashboardLayout = () => {
                             </li>
 
                             <li>
-                                <Link to={"/dashboard/my-review"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Review">
+                                <Link to={"/dashboard/my-review"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Reviews">
                                     {/* Review icon */}
                                     <MdOutlineReviews />
                                     <span className="is-drawer-close:hidden">My Review</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to={"/dashboard/my-favorite"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Favorite">
+                                <Link to={"/dashboard/my-favorite"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MY Favorite">
                                     {/* Favorite icon */}
                                     <MdOutlineFavoriteBorder />
                                     <span className="is-drawer-close:hidden">My Favorite</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={"/dashboard/create-meal"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Create Meal">
+                                    {/* Create meal */}
+                                    <MdNoMeals />
+                                    <span className="is-drawer-close:hidden">Create meal</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={"/dashboard/my-meals"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Meals">
+                                    {/* My meals */}
+                                    <GiHotMeal />
+                                    <span className="is-drawer-close:hidden">My Meals</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={"/dashboard/order-requests"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Order Requests">
+                                    {/* Order requests */}
+                                    <GiMeal />
+                                    <span className="is-drawer-close:hidden">Order Requests</span>
                                 </Link>
                             </li>
 

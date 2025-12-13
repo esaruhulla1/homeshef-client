@@ -58,7 +58,7 @@ const MyReview = () => {
     if (loading || isLoading) return <p>Loading...</p>;
 
     return (
-        <div className=" mx-auto p-4 pt-2">
+        <div className="max-w-6xl  mx-auto p-4 pt-2">
             <h2 className="text-2xl font-bold mb-5 mr-10 text-center">My Reviews</h2>
 
             {reviews.length === 0 ? (

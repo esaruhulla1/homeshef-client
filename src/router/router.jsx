@@ -14,6 +14,9 @@ import MyReview from "../pages/dashboard/myReview/MyReview";
 import MyFavorite from "../pages/dashboard/myFavorite/MyFavorite";
 import MyOrder from "../pages/dashboard/myOrder/MyOrder";
 import PaymentSuccess from "../pages/dashboard/myOrder/PaymentSuccess";
+import CreateMeal from "../pages/dashboard/createMeal/CreateMeal";
+import MyMeals from "../pages/dashboard/myMeals/MyMeals";
+import OrderRequests from "../pages/dashboard/orderRequests/OrderRequests";
 
 export const router = createBrowserRouter([
   {
@@ -75,7 +78,19 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/payment-success",
         element: <PaymentSuccess></PaymentSuccess>
-      }
+      },
+      {
+        path: "/dashboard/create-meal",
+        element: <CreateMeal></CreateMeal>
+      },
+      {
+        path: "/dashboard/my-meals",
+        element: <MyMeals></MyMeals>
+      },
+      {
+        path: "/dashboard/order-requests",
+        element: <OrderRequests></OrderRequests>
+      },
     ]
   }
 

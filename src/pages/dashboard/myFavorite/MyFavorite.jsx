@@ -46,7 +46,7 @@ export default function MyFavorite() {
     }
 
     return (
-        <div className="p-4 md:p-6 lg:p-10">
+        <div className="max-w-6xl mx-auto p-4 md:p-6 lg:p-10">
             <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center">
                 My Favorite Meals
             </h1>
