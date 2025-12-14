@@ -75,7 +75,7 @@ export default function MyProfile() {
             <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
 
                 {/* LEFT SIDE — Profile Card */}
-                <div className="bg-[#F3EDE6] shadow-xl rounded-xl overflow-hidden ">
+                <div className="bg-gray-100 shadow-sm rounded-xl overflow-hidden ">
 
                     <div className="py-12 px-10 text-center">
                         <img
@@ -100,12 +100,12 @@ export default function MyProfile() {
                     </div>
 
                     {/* Social Icons */}
-                    <div className="bg-white py-4 flex items-center justify-center gap-6 text-xl border-t">
+                    {/* <div className=" bg-white py-4 flex items-center justify-center gap-6 text-xl border-t">
                         <i className="fa-brands fa-facebook cursor-pointer hover:text-blue-600"></i>
                         <i className="fa-brands fa-twitter cursor-pointer hover:text-blue-400"></i>
                         <i className="fa-brands fa-linkedin cursor-pointer hover:text-blue-700"></i>
                         <i className="fa-brands fa-instagram cursor-pointer hover:text-pink-500"></i>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* RIGHT SIDE — Content Section */}

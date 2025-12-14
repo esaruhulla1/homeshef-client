@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import { useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
@@ -13,19 +13,75 @@ export default function Order() {
     const [quantity, setQuantity] = useState(1);
     const [address, setAddress] = useState("");
 
-    // Fetch meal details
+    // ===============================
+    // 🔐 Fetch Server User by Email
+    // ===============================
+    const {
+        data: serverUser,
+        isLoading: serverUserLoading,
+    } = useQuery({
+        queryKey: ["serverUser", user?.email],
+        enabled: !!user?.email,
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/users/email/${user.email}`);
+            return res.data;
+        },
+    });
+
+    // ===============================
+    // 🔔 Fraud Alert (Server Based)
+    // ===============================
+    useEffect(() => {
+        if (serverUser?.status === "fraud") {
+            Swal.fire(
+                "Blocked!",
+                "Fraud users cannot place orders",
+                "error"
+            );
+        }
+    }, [serverUser]);
+
+    // ===============================
+    // 🚫 Block Fraud User UI
+    // ===============================
+    if (serverUserLoading) {
+        return <div className="text-center py-20">Loading...</div>;
+    }
+
+    if (serverUser?.status === "fraud") {
+        return (
+            <div className="text-center py-20">
+                <h2 className="text-2xl font-bold text-red-600">
+                    You are blocked 🚫
+                </h2>
+                <p className="mt-2">
+                    Fraud users cannot place orders.
+                </p>
+            </div>
+        );
+    }
+
+    // ===============================
+    // 🍽️ Fetch Meal Data
+    // ===============================
     const { data: meal, isLoading } = useQuery({
         queryKey: ["meal", id],
+        enabled: !!id,
         queryFn: async () => {
             const res = await axiosSecure.get(`/meals/${id}`);
             return res.data;
         },
     });
 
-    if (isLoading) return <div className="text-center py-10">Loading...</div>;
+    if (isLoading) {
+        return <div className="text-center py-10">Loading meal...</div>;
+    }
 
     const totalPrice = meal.price * quantity;
 
+    // ===============================
+    // 🛒 Handle Order
+    // ===============================
     const handleOrder = () => {
         if (!address) {
             return Swal.fire("Error", "Please enter your delivery address", "error");
@@ -37,7 +93,6 @@ export default function Order() {
             icon: "question",
             showCancelButton: true,
             confirmButtonText: "Yes, confirm",
-            cancelButtonText: "Cancel",
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const orderData = {
@@ -53,26 +108,36 @@ export default function Order() {
                     orderTime: new Date().toISOString(),
                 };
 
-                const res = await axiosSecure.post("/orders", orderData);
+                try {
+                    const res = await axiosSecure.post("/orders", orderData);
 
-                if (res.data.insertedId) {
-                    Swal.fire("Success!", "Order placed successfully!", "success");
-
+                    if (res.data.insertedId) {
+                        Swal.fire("Success!", "Order placed successfully!", "success");
+                    }
+                } catch (error) {
+                    Swal.fire(
+                        "Blocked",
+                        error?.response?.data?.message || "Order failed",
+                        "error"
+                    );
                 }
             }
         });
     };
 
+    // ===============================
+    // 📦 UI
+    // ===============================
     return (
         <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg my-10">
-            <h2 className="text-2xl font-bold mb-6 text-center">Confirm Your Order</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center">
+                Confirm Your Order
+            </h2>
 
-            {/* Meal info auto-filled */}
             <div className="space-y-3">
                 <div>
                     <label className="font-semibold">Meal Name:</label>
                     <input
-                        type="text"
                         value={meal.foodName}
                         disabled
                         className="w-full border p-2 rounded"
@@ -82,14 +147,12 @@ export default function Order() {
                 <div>
                     <label className="font-semibold">Price:</label>
                     <input
-                        type="text"
                         value={`$${meal.price}`}
                         disabled
                         className="w-full border p-2 rounded"
                     />
                 </div>
 
-                {/* Quantity */}
                 <div>
                     <label className="font-semibold">Quantity:</label>
                     <input
@@ -101,37 +164,35 @@ export default function Order() {
                     />
                 </div>
 
-                {/* User Email */}
                 <div>
                     <label className="font-semibold">Your Email:</label>
                     <input
-                        type="text"
                         value={user?.email}
                         disabled
                         className="w-full border p-2 rounded"
                     />
                 </div>
 
-                {/* Address */}
                 <div>
                     <label className="font-semibold">Delivery Address:</label>
                     <textarea
-                        placeholder="Enter full address..."
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
                         className="w-full border p-2 rounded"
                         rows={3}
-                    ></textarea>
+                    />
                 </div>
 
-                {/* Total Price */}
                 <p className="text-lg font-semibold">
-                    Total Price: <span className="text-green-600">${totalPrice}</span>
+                    Total Price:
+                    <span className="text-green-600"> ${totalPrice}</span>
                 </p>
 
                 <button
                     onClick={handleOrder}
-                    className="bg-orange-600 w-full text-white py-2 rounded mt-4 hover:bg-orange-700"
+                    disabled={serverUser?.status === "fraud"}
+                    className="bg-orange-600 w-full text-white py-2 rounded mt-4
+                               hover:bg-orange-700 disabled:bg-gray-400"
                 >
                     Confirm Order
                 </button>

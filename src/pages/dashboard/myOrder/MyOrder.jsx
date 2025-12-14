@@ -58,7 +58,7 @@ export default function MyOrder() {
                 {orders.map((order) => (
                     <div
                         key={order._id}
-                        className="border rounded-xl shadow-md p-5 bg-white hover:shadow-lg transition"
+                        className=" border border-gray-200 rounded-xl shadow-sm p-5 bg-white hover:shadow-lg transition"
                     >
                         <h2 className="text-xl font-bold mb-2">{order.mealName}</h2>
 

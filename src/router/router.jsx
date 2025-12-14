@@ -17,6 +17,9 @@ import PaymentSuccess from "../pages/dashboard/myOrder/PaymentSuccess";
 import CreateMeal from "../pages/dashboard/createMeal/CreateMeal";
 import MyMeals from "../pages/dashboard/myMeals/MyMeals";
 import OrderRequests from "../pages/dashboard/orderRequests/OrderRequests";
+import ManageUsers from "../pages/dashboard/manageUsers/ManageUsers";
+import PlatformStatistics from "../pages/dashboard/platformStatistics/PlatformStatistics";
+import ManageRequest from "../pages/dashboard/manageRequest/ManageRequest";
 
 export const router = createBrowserRouter([
   {
@@ -90,6 +93,18 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/order-requests",
         element: <OrderRequests></OrderRequests>
+      },
+      {
+        path: "/dashboard/manage-user",
+        element: <ManageUsers></ManageUsers>
+      },
+      {
+        path: "/dashboard/manage-request",
+        element: <ManageRequest></ManageRequest>
+      },
+      {
+        path: "/dashboard/platform-statistics",
+        element: <PlatformStatistics></PlatformStatistics>
       },
     ]
   }

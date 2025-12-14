@@ -2,10 +2,11 @@ import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router';
 import { CgProfile } from "react-icons/cg";
 import { TbTruckDelivery } from "react-icons/tb";
-import { MdNoMeals, MdOutlineFoodBank, MdOutlineReviews } from "react-icons/md";
+import { MdManageAccounts, MdNoMeals, MdOutlineFoodBank, MdOutlineReviews } from "react-icons/md";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { GiHotMeal, GiMeal } from "react-icons/gi";
 import { LuGitPullRequestCreateArrow } from "react-icons/lu";
+import { FaChartBar, FaUsers, FaUsersCog, FaUserShield } from "react-icons/fa";
 
 
 const DashboardLayout = () => {
@@ -88,6 +89,27 @@ const DashboardLayout = () => {
                                     {/* Order requests */}
                                     <GiMeal />
                                     <span className="is-drawer-close:hidden">Order Requests</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={"/dashboard/manage-user"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage User">
+                                    {/* Manage User */}
+                                    <FaUsers />
+                                    <span className="is-drawer-close:hidden">Manage User</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={"/dashboard/manage-request"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Mange request">
+                                    {/* Mange request */}
+                                    <FaUserShield />
+                                    <span className="is-drawer-close:hidden">Mange Request</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={"/dashboard/platform-statistics"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Statistics">
+                                    {/* Platform Statistics */}
+                                    <FaChartBar />
+                                    <span className="is-drawer-close:hidden">Platform Statistics</span>
                                 </Link>
                             </li>
 
