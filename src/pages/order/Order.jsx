@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
@@ -9,6 +9,7 @@ export default function Order() {
     const { user } = useContext(AuthContext);
     const { id } = useParams();
     const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate();
 
     const [quantity, setQuantity] = useState(1);
     const [address, setAddress] = useState("");
@@ -29,6 +30,21 @@ export default function Order() {
     });
 
     // ===============================
+    // 🍽️ Fetch Meal Data
+    // ===============================
+    const {
+        data: meal,
+        isLoading: mealLoading,
+    } = useQuery({
+        queryKey: ["meal", id],
+        enabled: !!id,
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/meals/${id}`);
+            return res.data;
+        },
+    });
+
+    // ===============================
     // 🔔 Fraud Alert (Server Based)
     // ===============================
     useEffect(() => {
@@ -42,10 +58,10 @@ export default function Order() {
     }, [serverUser]);
 
     // ===============================
-    // 🚫 Block Fraud User UI
+    // UI Loading States
     // ===============================
-    if (serverUserLoading) {
-        return <div className="text-center py-20">Loading...</div>;
+    if (serverUserLoading || mealLoading) {
+        return <div className="text-center py-20 text-xl">Loading...</div>;
     }
 
     if (serverUser?.status === "fraud") {
@@ -54,29 +70,14 @@ export default function Order() {
                 <h2 className="text-2xl font-bold text-red-600">
                     You are blocked 🚫
                 </h2>
-                <p className="mt-2">
-                    Fraud users cannot place orders.
-                </p>
+                <p className="mt-2">Fraud users cannot place orders.</p>
             </div>
         );
     }
 
     // ===============================
-    // 🍽️ Fetch Meal Data
+    // 🚀 Total Price
     // ===============================
-    const { data: meal, isLoading } = useQuery({
-        queryKey: ["meal", id],
-        enabled: !!id,
-        queryFn: async () => {
-            const res = await axiosSecure.get(`/meals/${id}`);
-            return res.data;
-        },
-    });
-
-    if (isLoading) {
-        return <div className="text-center py-10">Loading meal...</div>;
-    }
-
     const totalPrice = meal.price * quantity;
 
     // ===============================
@@ -112,7 +113,10 @@ export default function Order() {
                     const res = await axiosSecure.post("/orders", orderData);
 
                     if (res.data.insertedId) {
-                        Swal.fire("Success!", "Order placed successfully!", "success");
+                        Swal.fire("Success!", "Order placed successfully!", "success")
+                            .then(() => {
+                                navigate("/meals"); // ✅ navigate after order
+                            });
                     }
                 } catch (error) {
                     Swal.fire(

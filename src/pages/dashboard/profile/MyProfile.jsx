@@ -156,7 +156,7 @@ export default function MyProfile() {
                     <p className="text-gray-600 mb-2">
                         <strong>Request Status:</strong>{" "}
                         {alreadyRequested ? (
-                            <span className="text-orange-600 font-semibold">Pending</span>
+                            <span className="text-green-400 font-semibold">{userData.role}</span>
                         ) : (
                             "No Requests Yet"
                         )}
