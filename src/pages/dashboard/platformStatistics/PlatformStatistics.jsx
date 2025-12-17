@@ -13,6 +13,7 @@ import {
     Tooltip,
     Legend
 } from 'recharts';
+import Loading from '../../../components/shared/loading';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
@@ -28,7 +29,7 @@ const PlatformStatistics = () => {
     }, [axiosSecure]);
 
     if (!stats) {
-        return <div className="text-center py-10">Loading statistics...</div>;
+        return <div className="text-center py-10"><Loading></Loading></div>;
     }
 
     const orderData = [

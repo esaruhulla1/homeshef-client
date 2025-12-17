@@ -6,7 +6,7 @@ import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import Meals from "../pages/meals/Meals";
 import MealsDetails from "../pages/mealsDetails/MealsDetails";
-import PrivateRoute from "../router/PrivateRoute";
+import PrivateRoute from "./PrivateRoute";
 import Order from "../pages/order/Order";
 import DashboardLayout from "../layouts/DashboardLayout";
 import MyProfile from "../pages/dashboard/profile/MyProfile";
@@ -20,11 +20,15 @@ import OrderRequests from "../pages/dashboard/orderRequests/OrderRequests";
 import ManageUsers from "../pages/dashboard/manageUsers/ManageUsers";
 import PlatformStatistics from "../pages/dashboard/platformStatistics/PlatformStatistics";
 import ManageRequest from "../pages/dashboard/manageRequest/ManageRequest";
+import Error from "../components/shared/Error";
+import AdminRoute from "./AdminRoute";
+import ChefRoute from "./ChefRoute";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayout,
+    errorElement: <Error></Error>,
     children: [
       {
         index: true,
@@ -64,19 +68,19 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: MyProfile
+        element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
       },
       {
         path: "/dashboard/my-review",
-        element: <MyReview></MyReview>
+        element: <PrivateRoute><MyReview></MyReview></PrivateRoute>
       },
       {
         path: "/dashboard/my-favorite",
-        element: <MyFavorite></MyFavorite>
+        element: <PrivateRoute><MyFavorite></MyFavorite></PrivateRoute>
       },
       {
         path: "/dashboard/my-order",
-        element: <MyOrder></MyOrder>
+        element: <PrivateRoute><MyOrder></MyOrder></PrivateRoute>
       },
       {
         path: "/dashboard/payment-success",
@@ -84,27 +88,27 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/create-meal",
-        element: <CreateMeal></CreateMeal>
+        element: <ChefRoute><CreateMeal></CreateMeal></ChefRoute>
       },
       {
         path: "/dashboard/my-meals",
-        element: <MyMeals></MyMeals>
+        element: <ChefRoute> <MyMeals></MyMeals></ChefRoute>
       },
       {
         path: "/dashboard/order-requests",
-        element: <OrderRequests></OrderRequests>
+        element: <ChefRoute><OrderRequests></OrderRequests></ChefRoute>
       },
       {
         path: "/dashboard/manage-user",
-        element: <ManageUsers></ManageUsers>
+        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
       },
       {
         path: "/dashboard/manage-request",
-        element: <ManageRequest></ManageRequest>
+        element: <AdminRoute><ManageRequest></ManageRequest></AdminRoute>
       },
       {
         path: "/dashboard/platform-statistics",
-        element: <PlatformStatistics></PlatformStatistics>
+        element: <AdminRoute><PlatformStatistics></PlatformStatistics></AdminRoute>
       },
     ]
   }

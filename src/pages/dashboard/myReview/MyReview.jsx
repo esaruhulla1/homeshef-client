@@ -3,6 +3,7 @@ import { AuthContext } from "../../../Context/AuthContext";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import Loading from "../../../components/shared/loading";
 
 const MyReview = () => {
     const { user, loading } = useContext(AuthContext);
@@ -55,7 +56,7 @@ const MyReview = () => {
         queryClient.invalidateQueries(["myReviews"]);
     };
 
-    if (loading || isLoading) return <p>Loading...</p>;
+    if (loading || isLoading) return <p ><Loading></Loading></p>;
 
     return (
         <div className="max-w-6xl  mx-auto p-4 pt-2">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, NavLink, Outlet } from 'react-router';
 import { CgProfile } from "react-icons/cg";
 import { TbTruckDelivery } from "react-icons/tb";
@@ -7,9 +7,17 @@ import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { GiHotMeal, GiMeal } from "react-icons/gi";
 import { LuGitPullRequestCreateArrow } from "react-icons/lu";
 import { FaChartBar, FaUsers, FaUsersCog, FaUserShield } from "react-icons/fa";
+import useRole from '../hooks/useRole';
 
 
 const DashboardLayout = () => {
+    const { role } = useRole();
+
+
+    useEffect(() => {
+        document.title = " HomeShef | Dashboard ";
+    }, []);
+
     return (
         <div className='container mx-auto'>
             <div className="drawer lg:drawer-open">
@@ -70,48 +78,66 @@ const DashboardLayout = () => {
                                     <span className="is-drawer-close:hidden">My Favorite</span>
                                 </Link>
                             </li>
-                            <li>
-                                <Link to={"/dashboard/create-meal"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Create Meal">
-                                    {/* Create meal */}
-                                    <MdNoMeals />
-                                    <span className="is-drawer-close:hidden">Create meal</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={"/dashboard/my-meals"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Meals">
-                                    {/* My meals */}
-                                    <GiHotMeal />
-                                    <span className="is-drawer-close:hidden">My Meals</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={"/dashboard/order-requests"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Order Requests">
-                                    {/* Order requests */}
-                                    <GiMeal />
-                                    <span className="is-drawer-close:hidden">Order Requests</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={"/dashboard/manage-user"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage User">
-                                    {/* Manage User */}
-                                    <FaUsers />
-                                    <span className="is-drawer-close:hidden">Manage User</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={"/dashboard/manage-request"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Mange request">
-                                    {/* Mange request */}
-                                    <FaUserShield />
-                                    <span className="is-drawer-close:hidden">Mange Request</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={"/dashboard/platform-statistics"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Statistics">
-                                    {/* Platform Statistics */}
-                                    <FaChartBar />
-                                    <span className="is-drawer-close:hidden">Platform Statistics</span>
-                                </Link>
-                            </li>
+
+
+                            {
+                                role === "chef" && <>
+                                    <li>
+                                        <Link to={"/dashboard/create-meal"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Create Meal">
+                                            {/* Create meal */}
+                                            <MdNoMeals />
+                                            <span className="is-drawer-close:hidden">Create meal</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={"/dashboard/my-meals"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Meals">
+                                            {/* My meals */}
+                                            <GiHotMeal />
+                                            <span className="is-drawer-close:hidden">My Meals</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={"/dashboard/order-requests"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Order Requests">
+                                            {/* Order requests */}
+                                            <GiMeal />
+                                            <span className="is-drawer-close:hidden">Order Requests</span>
+                                        </Link>
+                                    </li>
+                                </>
+                            }
+
+
+                            {/* admin links */}
+
+
+                            {
+                                role === "admin" && <>
+                                    <li>
+                                        <Link to={"/dashboard/manage-user"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage User">
+                                            {/* Manage User */}
+                                            <FaUsers />
+                                            <span className="is-drawer-close:hidden">Manage User</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={"/dashboard/manage-request"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Mange request">
+                                            {/* Mange request */}
+                                            <FaUserShield />
+                                            <span className="is-drawer-close:hidden">Mange Request</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={"/dashboard/platform-statistics"} className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Statistics">
+                                            {/* Platform Statistics */}
+                                            <FaChartBar />
+                                            <span className="is-drawer-close:hidden">Platform Statistics</span>
+                                        </Link>
+                                    </li>
+                                </>
+                            }
+
+
+
 
                             <li>
                                 <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Settings">

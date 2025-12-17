@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import Loading from "../../../components/shared/loading";
 
 const ManageUsers = () => {
     const axiosSecure = useAxiosSecure();
@@ -41,7 +42,7 @@ const ManageUsers = () => {
         Swal.fire("Success!", "Fraud removed successfully", "success");
     };
 
-    if (isLoading) return <p>Loading users...</p>;
+    if (isLoading) return <p><Loading></Loading></p>;
 
     return (
         <div className="p-6">

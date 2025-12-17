@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Link } from "react-router";
+import Loading from "../shared/loading";
 
 export default function PopulerMeals() {
     const axiosSecure = useAxiosSecure();
@@ -19,7 +20,7 @@ export default function PopulerMeals() {
     if (isLoading) {
         return (
             <div className="text-center py-20 text-xl font-semibold">
-                Loading Popular Meals...
+                <Loading></Loading>
             </div>
         );
     }

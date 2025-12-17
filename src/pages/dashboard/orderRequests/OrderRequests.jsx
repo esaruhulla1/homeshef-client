@@ -3,6 +3,7 @@ import { AuthContext } from '../../../Context/AuthContext';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
+import Loading from '../../../components/shared/loading';
 
 const OrderRequests = () => {
     const { user } = useContext(AuthContext);
@@ -55,7 +56,7 @@ const OrderRequests = () => {
     };
 
     if (isLoading) {
-        return <p className="text-center mt-10">Loading orders...</p>;
+        return <p className="text-center mt-10"><Loading></Loading></p>;
     }
 
     return (

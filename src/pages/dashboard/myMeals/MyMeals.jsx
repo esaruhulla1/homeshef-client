@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Context/AuthContext';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import Loading from '../../../components/shared/loading';
 
 const MyMeals = () => {
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
 
     const [meals, setMeals] = useState([]);
@@ -94,6 +95,10 @@ const MyMeals = () => {
             Swal.fire('Error', 'Failed to update meal', 'error');
         }
     };
+
+        if (loading) {
+        return <div className="text-center py-20 text-xl"><Loading></Loading></div>;
+    }
 
     return (
         <div className='max-w-6xl mx-auto p-4'>

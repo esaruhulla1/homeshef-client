@@ -1,14 +1,19 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { AuthContext } from "../../Context/AuthContext";
 import toast from "react-hot-toast";
+import Loading from "../../components/shared/loading";
 
 const MealsDetails = () => {
+    useEffect(() => {
+        document.title = " HomeShef | Meal Details ";
+    }, []);
+
     const { user, loading } = useContext(AuthContext);
-    console.log(user);
-    
+    // console.log(user);
+
     const { id } = useParams();
     const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
@@ -44,6 +49,9 @@ const MealsDetails = () => {
         e.preventDefault();
         if (!user) {
             return alert("You must be logged in to submit a review!");
+        }
+        if (loading) {
+            return <Loading></Loading>
         }
 
         const reviewData = {
@@ -106,15 +114,15 @@ const MealsDetails = () => {
 
 
 
-    if (isLoading) return <p className="text-center py-20 text-xl">Loading...</p>;
+    if (isLoading) return <p className=""><Loading></Loading></p>;
     if (isError) return <p className="text-red-500 text-center py-20">Failed to load details.</p>;
 
     return (
         <div className="container mx-auto px-3 py-10 font-inter">
 
-            {/* =======================
-                 Meal Main Section
-            ======================== */}
+
+            {/* Meal Main Section */}
+
             <div className="flex flex-col lg:flex-row gap-10">
                 <div className="lg:w-1/2">
                     <img
@@ -162,13 +170,13 @@ const MealsDetails = () => {
                 </div>
             </div>
 
-            {/* ===============================
-                 ⭐ Review Section
-            ================================ */}
+
+            {/* ⭐ Review Section */}
+
             <div className="mt-14">
                 <h2 className="text-2xl font-bold mb-5">Customer Reviews</h2>
 
-                {reviewLoading && <p className="text-gray-500">Loading reviews...</p>}
+                {reviewLoading && <p className="text-gray-500"><Loading></Loading></p>}
 
                 {!reviewLoading && (!reviews || reviews.length === 0) && (
                     <p className="text-gray-500">No reviews yet.</p>
@@ -200,9 +208,9 @@ const MealsDetails = () => {
                     ))}
                 </div>
 
-                {/* ==========================
-                     ⭐ Add Review Form
-                =========================== */}
+
+                {/* ⭐ Add Review Form */}
+
                 <h2 className="text-xl font-semibold mt-10 mb-3">
                     ✍️ Write a Review
                 </h2>

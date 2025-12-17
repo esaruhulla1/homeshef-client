@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Link } from "react-router";
+import Loading from "../../components/shared/loading";
 
 const Meals = () => {
+
+    useEffect(() => {
+        document.title = "HomeShef | Meals";
+    }, []);
+
     const axiosSecure = useAxiosSecure();
 
     // 🔥 Sort state
@@ -30,7 +36,7 @@ const Meals = () => {
     if (isLoading) {
         return (
             <div className="text-center py-20 text-xl font-semibold">
-                Loading meals...
+                <Loading></Loading>
             </div>
         );
     }
@@ -106,7 +112,7 @@ const Meals = () => {
 
                     </div>
 
-                    
+
                 ))
                 }
             </div >

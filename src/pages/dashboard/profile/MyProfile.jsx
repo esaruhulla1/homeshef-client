@@ -3,6 +3,7 @@ import { AuthContext } from "../../../Context/AuthContext";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import Loading from "../../../components/shared/loading";
 
 export default function MyProfile() {
     const { user, loading } = useContext(AuthContext);
@@ -29,7 +30,7 @@ export default function MyProfile() {
     });
 
     if (loading || isLoading) {
-        return <p className="text-center mt-10 text-xl font-semibold">Loading...</p>;
+        return <p className="text-center mt-10 text-xl font-semibold"><Loading></Loading></p>;
     }
 
     const alreadyRequested = userRequests.length > 0;

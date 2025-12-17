@@ -4,8 +4,13 @@ import { useParams, useNavigate } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import Loading from "../../components/shared/loading";
 
 export default function Order() {
+    useEffect(() => {
+        document.title = " HomeShef | Order ";
+    }, []);
+
     const { user } = useContext(AuthContext);
     const { id } = useParams();
     const axiosSecure = useAxiosSecure();
@@ -14,9 +19,9 @@ export default function Order() {
     const [quantity, setQuantity] = useState(1);
     const [address, setAddress] = useState("");
 
-    // ===============================
+
     // 🔐 Fetch Server User by Email
-    // ===============================
+
     const {
         data: serverUser,
         isLoading: serverUserLoading,
@@ -29,9 +34,8 @@ export default function Order() {
         },
     });
 
-    // ===============================
     // 🍽️ Fetch Meal Data
-    // ===============================
+
     const {
         data: meal,
         isLoading: mealLoading,
@@ -44,9 +48,9 @@ export default function Order() {
         },
     });
 
-    // ===============================
+
     // 🔔 Fraud Alert (Server Based)
-    // ===============================
+
     useEffect(() => {
         if (serverUser?.status === "fraud") {
             Swal.fire(
@@ -57,11 +61,11 @@ export default function Order() {
         }
     }, [serverUser]);
 
-    // ===============================
+
     // UI Loading States
-    // ===============================
+
     if (serverUserLoading || mealLoading) {
-        return <div className="text-center py-20 text-xl">Loading...</div>;
+        return <div className="text-center py-20 text-xl"><Loading></Loading></div>;
     }
 
     if (serverUser?.status === "fraud") {
@@ -75,14 +79,14 @@ export default function Order() {
         );
     }
 
-    // ===============================
+
     // 🚀 Total Price
-    // ===============================
+
     const totalPrice = meal.price * quantity;
 
-    // ===============================
+
     // 🛒 Handle Order
-    // ===============================
+
     const handleOrder = () => {
         if (!address) {
             return Swal.fire("Error", "Please enter your delivery address", "error");
@@ -129,9 +133,9 @@ export default function Order() {
         });
     };
 
-    // ===============================
+
     // 📦 UI
-    // ===============================
+
     return (
         <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg my-10">
             <h2 className="text-2xl font-bold mb-6 text-center">

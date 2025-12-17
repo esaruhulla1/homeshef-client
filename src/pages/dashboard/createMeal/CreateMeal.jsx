@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../../Context/AuthContext";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useNavigate } from "react-router";
+import Loading from "../../../components/shared/loading";
 
 const CreateMeal = () => {
     const { user } = useContext(AuthContext);
@@ -48,7 +49,7 @@ const CreateMeal = () => {
     });
 
     if (serverUserLoading) {
-        return <div className="text-center py-20 text-xl">Loading...</div>;
+        return <div className="text-center py-20 text-xl"><Loading></Loading></div>;
     }
 
     if (serverUser?.status === "fraud") {

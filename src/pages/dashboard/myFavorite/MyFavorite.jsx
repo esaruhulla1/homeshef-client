@@ -3,6 +3,7 @@ import { AuthContext } from "../../../Context/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import Loading from "../../../components/shared/loading";
 
 export default function MyFavorite() {
     const { user, loading } = useContext(AuthContext);
@@ -42,7 +43,7 @@ export default function MyFavorite() {
     };
 
     if (loading || isLoading) {
-        return <p className="text-center py-10 text-lg font-semibold">Loading...</p>;
+        return <p ><Loading></Loading></p>;
     }
 
     return (

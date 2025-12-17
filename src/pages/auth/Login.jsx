@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -7,6 +7,9 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Context/AuthContext";
 
 export default function Login() {
+    useEffect(() => {
+        document.title = " HomeShef | Login ";
+    }, []);
     const navigate = useNavigate();
     const { singInUser, loading } = useContext(AuthContext);
 

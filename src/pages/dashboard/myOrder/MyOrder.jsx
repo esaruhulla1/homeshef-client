@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../../Context/AuthContext";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import Loading from "../../../components/shared/loading";
 
 export default function MyOrder() {
     const { user, loading } = useContext(AuthContext);
@@ -19,7 +20,7 @@ export default function MyOrder() {
 
     if (loading || isLoading) {
         return (
-            <p className="text-center py-10 text-lg font-semibold">Loading orders...</p>
+            <p className="text-center  text-lg font-semibold"><Loading></Loading></p>
         );
     }
 
