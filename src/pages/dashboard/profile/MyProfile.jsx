@@ -155,7 +155,7 @@ export default function MyProfile() {
                     </p>
 
                     <p className="text-gray-600 mb-2">
-                        <strong>Request Status:</strong>{" "}
+                        <strong>Role:</strong>{" "}
                         {alreadyRequested ? (
                             <span className="text-green-400 font-semibold">{userData.role}</span>
                         ) : (

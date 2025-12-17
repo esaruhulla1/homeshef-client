@@ -35,15 +35,15 @@ export const router = createBrowserRouter([
         element: <Home></Home>
       },
       {
-        path: "/meals",
+        path: "meals",
         Component: Meals
       },
       {
-        path: "/meal/:id",
+        path: "meal/:id",
         element: <PrivateRoute><MealsDetails></MealsDetails></PrivateRoute>
       },
       {
-        path: "/order/:id",
+        path: "order/:id",
         element: <PrivateRoute><Order></Order></PrivateRoute>
       },
     ]
@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
     ]
   },
   {
-    path: "/dashboard",
+    path: "dashboard",
     Component: DashboardLayout,
     children: [
       {
@@ -71,43 +71,43 @@ export const router = createBrowserRouter([
         element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
       },
       {
-        path: "/dashboard/my-review",
+        path: "my-review",
         element: <PrivateRoute><MyReview></MyReview></PrivateRoute>
       },
       {
-        path: "/dashboard/my-favorite",
+        path: "my-favorite",
         element: <PrivateRoute><MyFavorite></MyFavorite></PrivateRoute>
       },
       {
-        path: "/dashboard/my-order",
+        path: "my-order",
         element: <PrivateRoute><MyOrder></MyOrder></PrivateRoute>
       },
       {
-        path: "/dashboard/payment-success",
+        path: "payment-success",
         element: <PaymentSuccess></PaymentSuccess>
       },
       {
-        path: "/dashboard/create-meal",
+        path: "create-meal",
         element: <ChefRoute><CreateMeal></CreateMeal></ChefRoute>
       },
       {
-        path: "/dashboard/my-meals",
+        path: "my-meals",
         element: <ChefRoute> <MyMeals></MyMeals></ChefRoute>
       },
       {
-        path: "/dashboard/order-requests",
+        path: "order-requests",
         element: <ChefRoute><OrderRequests></OrderRequests></ChefRoute>
       },
       {
-        path: "/dashboard/manage-user",
+        path: "manage-user",
         element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
       },
       {
-        path: "/dashboard/manage-request",
+        path: "manage-request",
         element: <AdminRoute><ManageRequest></ManageRequest></AdminRoute>
       },
       {
-        path: "/dashboard/platform-statistics",
+        path: "platform-statistics",
         element: <AdminRoute><PlatformStatistics></PlatformStatistics></AdminRoute>
       },
     ]
