@@ -85,7 +85,7 @@ export default function Banner() {
                             href="/meals"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="bg-white border border-gray-300 px-6 py-3 rounded-full text-lg font-semibold shadow hover:shadow-md transition flex items-center gap-2"
+                            className="bg-white border border-[#70ab44] px-6 py-3 rounded-full text-lg font-semibold shadow hover:shadow-md transition flex items-center gap-2"
                         >
                             <FaPlay className="text-red-500" /> Order Process
                         </motion.a>

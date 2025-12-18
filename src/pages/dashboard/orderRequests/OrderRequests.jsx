@@ -93,7 +93,7 @@ const OrderRequests = () => {
                                     onClick={() =>
                                         handleStatus(_id, 'cancelled', 'Cancel this order?')
                                     }
-                                    className="btn btn-xs btn-error border-0 bg-red-500 rounded-sm"
+                                    className="btn btn-xs btn-error "
                                 >
                                     Cancel
                                 </button>
@@ -103,7 +103,7 @@ const OrderRequests = () => {
                                     onClick={() =>
                                         handleStatus(_id, 'accepted', 'Accept this order?')
                                     }
-                                    className="btn btn-xs btn-success border-0 bg-green-400 rounded-sm"
+                                    className="btn btn-xs btn-success"
                                 >
                                     Accept
                                 </button>
@@ -113,7 +113,7 @@ const OrderRequests = () => {
                                     onClick={() =>
                                         handleStatus(_id, 'delivered', 'Mark as delivered?')
                                     }
-                                    className="btn btn-xs btn-primary border-0 bg-green-500 rounded-sm"
+                                    className="btn btn-xs btn-primary"
                                 >
                                     Deliver
                                 </button>

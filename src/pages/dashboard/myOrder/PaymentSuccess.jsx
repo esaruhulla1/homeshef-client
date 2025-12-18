@@ -11,7 +11,7 @@ export default function PaymentSuccess() {
 
     useEffect(() => {
         const verifyPayment = async () => {
-            const res = await axios.post("http://localhost:5000/payment-success", {
+            const res = await axios.post("https://home-shef-server.vercel.app/payment-success", {
                 sessionId: session_id,
                 orderId
             });

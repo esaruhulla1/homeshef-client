@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import "tailwindcss";
 
 /* theme */
@@ -52,3 +54,14 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+
+.jost-font {
+  font-family: "Jost", sans-serif;
+}
+
+
+.montserrat-font {
+  font-family: "Montserrat", sans-serif;
+}
+

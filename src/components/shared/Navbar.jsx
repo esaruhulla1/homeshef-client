@@ -59,8 +59,10 @@ const Navbar = () => {
                     </div>
 
                     <Link to={"/"} className="text-3xl font-bold tracking-tight cursor-pointer">
-                        <span>Home</span>
-                        <span className="text-red-500">Shef</span>
+                        <span><img className='w-[200px]' src="/HomeShef_logo.png" alt="" /></span>
+                        {/* <span><img className='w-[250px]' src="/HomeShef_logo2.png" alt="" /></span> */}
+                        {/* <span>Home</span>
+                        <span className="text-red-500">Shef</span> */}
                     </Link>
                 </div>
 
