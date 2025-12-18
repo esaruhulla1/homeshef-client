@@ -42,8 +42,8 @@ export default function MyOrder() {
 
 
     return (
-        <div className="max-w-6xl mx-auto p-4 md:p-6 lg:p-10">
-            <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center">
+        <div className="max-w-7xl mx-auto p-4 md:p-6 lg:p-10">
+            <h1 className="text-2xl  font-bold mb-6 text-center">
                 My Orders
             </h1>
 
@@ -75,9 +75,9 @@ export default function MyOrder() {
                             <span
                                 className={`px-2 py-1 rounded text-white text-sm
                                 ${order.orderStatus === "pending" && "bg-orange-500"}
-                                ${order.orderStatus === "preparing" && "bg-blue-500"}
+                                ${order.orderStatus === "preparing" && "bg-blue-800"}
                                 ${order.orderStatus === "delivered" && "bg-green-600"}
-                                ${order.orderStatus === "accepted" && "bg-purple-600"}
+                                ${order.orderStatus === "accepted" && "bg-green-400"}
                                 `}
                             >
                                 {order.orderStatus}
@@ -109,9 +109,9 @@ export default function MyOrder() {
                             <button
                                 disabled={!(order.orderStatus === "accepted" && order.paymentStatus === "pending")}
                                 onClick={() => handlePayment(order)}
-                                className={`relative w-full py-2 rounded-lg font-semibold
+                                className={`relative w-full py-2 rounded-lg font-semibold cursor-pointer
             ${!(order.orderStatus === "accepted" && order.paymentStatus === "pending")
-                                        ? "bg-gray-400 cursor-not-allowed"
+                                        ? "bg-gray-300 cursor-not-allowed"
                                         : "bg-green-600 hover:bg-green-700 text-white"
                                     }
         `}
@@ -122,7 +122,7 @@ export default function MyOrder() {
                             {/* Tooltip */}
                             {order.paymentStatus !== "paid" &&
                                 order.orderStatus !== "accepted" && (
-                                    <span className="absolute left-1/2 top-full mt-1 -translate-x-1/2 px-3 py-1 text-xs bg-black text-white rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <span className="absolute left-1/2 top-full mt-1 -translate-x-1/2 px-3 py-1 text-xs bg-gray-200 text-black rounded opacity-0 group-hover:opacity-100 transition-opacity">
                                         Waiting for Chef to accept the order
                                     </span>
                                 )}

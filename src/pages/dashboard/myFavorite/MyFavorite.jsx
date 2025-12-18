@@ -47,8 +47,8 @@ export default function MyFavorite() {
     }
 
     return (
-        <div className="max-w-6xl mx-auto p-4 md:p-6 lg:p-10">
-            <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center">
+        <div className="max-w-7xl mx-auto  p-4 pt-2">
+            <h1 className="text-2xl  font-bold mb-6 text-center">
                 My Favorite Meals
             </h1>
 
@@ -58,7 +58,7 @@ export default function MyFavorite() {
             )}
 
             {/* Responsive Table */}
-            <div className="overflow-x-auto shadow-lg rounded-lg">
+            <div className="overflow-x-auto shadow-sm rounded-lg">
                 <table className="w-full text-left border-collapse">
                     <thead className="bg-gray-200">
                         <tr>

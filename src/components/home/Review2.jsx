@@ -33,7 +33,7 @@ const Review2 = () => {
 
     return (
         <div>
-            <section className="w-full py-20 pt-35 font-sans">
+            <section className="w-full py-20 pt-35 font-sans ">
                 <div className="container mx-auto px-6">
                     {/* Top Section */}
                     <div className="flex justify-center text-center">

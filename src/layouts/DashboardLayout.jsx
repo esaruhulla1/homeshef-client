@@ -32,7 +32,9 @@ const DashboardLayout = () => {
                         <div className="px-4">Dashboard</div>
                     </nav>
                     {/* Page content here */}
+                    <div className=' mx-auto'>
                     <Outlet></Outlet>
+                    </div>
 
                 </div>
 

@@ -13,6 +13,8 @@ const Navbar = () => {
         <>
             <li><NavLink to="/" className={linkClass}>Home</NavLink></li>
             <li><NavLink to="/meals" className={linkClass}>Meals</NavLink></li>
+            <li><NavLink to="/about" className={linkClass}>About</NavLink></li>
+            {/* <li><NavLink to="/service" className={linkClass}>Service</NavLink></li> */}
 
             {/* 🔥 Dashboard only if user logged in */}
             {user && (
@@ -56,10 +58,10 @@ const Navbar = () => {
                         </ul>
                     </div>
 
-                    <a className="text-3xl font-bold tracking-tight cursor-pointer">
+                    <Link to={"/"} className="text-3xl font-bold tracking-tight cursor-pointer">
                         <span>Home</span>
                         <span className="text-red-500">Shef</span>
-                    </a>
+                    </Link>
                 </div>
 
                 {/* CENTER */}

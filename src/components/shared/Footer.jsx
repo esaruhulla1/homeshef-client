@@ -41,7 +41,7 @@ const Footer = () => {
                             className="flex-1 px-3 py-2 rounded-l sm:rounded-l bg-gray-800 border border-gray-700 focus:outline-none mb-2 sm:mb-0"
                             placeholder="Enter your email"
                         />
-                        <button className="px-4 py-2 bg-blue-600 text-white rounded-r hover:bg-blue-500">
+                        <button className="px-4 py-2 bg-green-500 text-white rounded-r hover:bg-green-600">
                             Send
                         </button>
                     </div>

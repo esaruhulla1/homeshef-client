@@ -23,6 +23,8 @@ import ManageRequest from "../pages/dashboard/manageRequest/ManageRequest";
 import Error from "../components/shared/Error";
 import AdminRoute from "./AdminRoute";
 import ChefRoute from "./ChefRoute";
+import About from "../pages/about/About";
+import Service from "../pages/Service/Service";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +47,14 @@ export const router = createBrowserRouter([
       {
         path: "order/:id",
         element: <PrivateRoute><Order></Order></PrivateRoute>
+      },
+      {
+        path: "about",
+        Component: About
+      },
+      {
+        path: "service",
+        Component: Service
       },
     ]
   },

@@ -1,82 +1,165 @@
 import React from "react";
 import { FaPlay, FaShoppingCart, FaClock } from "react-icons/fa";
-
+import { motion } from "framer-motion";
+import { Link } from "react-router";
 
 export default function Banner() {
     return (
-        <section className="w-full  py-20 bg-[#fef5f5]">
-            <div className="container mx-auto  grid grid-cols-1 md:grid-cols-2  items-center px-6">
+        <section className="w-full py-20 bg-[#fef5f5] overflow-hidden">
+            <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 items-center px-6">
+
                 {/* LEFT CONTENT */}
-                <div className="space-y-8  ">
-                    {/* Top badge */}
-                    <div className="inline-flex items-center gap-2 bg-red-50 px-4 py-1.5 rounded-full text-sm font-medium text-red-600">
+                <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                            opacity: 1,
+                            transition: {
+                                staggerChildren: 0.15,
+                            },
+                        },
+                    }}
+                    className="space-y-8"
+                >
+                    {/* Badge */}
+                    <motion.div
+                        variants={{
+                            hidden: { y: 20, opacity: 0 },
+                            visible: { y: 0, opacity: 1 },
+                        }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        className="inline-flex items-center gap-2 bg-red-50 px-4 py-1.5 rounded-full text-sm font-medium text-red-600 w-fit"
+                    >
                         More than Faster <FaPlay className="text-xs" />
-                    </div>
+                    </motion.div>
 
-                    <h1 className="text-5xl font-extrabold leading-tight text-gray-900">
+                    {/* Heading */}
+                    <motion.h1
+                        variants={{
+                            hidden: { y: 30, opacity: 0 },
+                            visible: { y: 0, opacity: 1 },
+                        }}
+                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        className="text-5xl font-extrabold leading-tight text-gray-900"
+                    >
                         Be The Fastest
-                        <br /> In Delivering Your {" "}
+                        <br /> In Delivering Your{" "}
                         <span className="text-red-500">Food</span>
-                    </h1>
+                    </motion.h1>
 
-                    <p className="text-gray-500 max-w-md">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                        vulputate libero et velit interdum, ac aliquet odio mattis.
-                    </p>
+                    {/* Paragraph */}
+                    <motion.p
+                        variants={{
+                            hidden: { y: 20, opacity: 0 },
+                            visible: { y: 0, opacity: 1 },
+                        }}
+                        transition={{ duration: 0.6 }}
+                        className="text-gray-500 max-w-md"
+                    >
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nunc vulputate libero et velit interdum.
+                    </motion.p>
 
                     {/* Buttons */}
-                    <div className="flex gap-4 pt-20">
-                        <button className="bg-red-500 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-md hover:bg-red-600 transition">
-                            Order Now
-                        </button>
+                    <motion.div
+                        variants={{
+                            hidden: { y: 20, opacity: 0 },
+                            visible: { y: 0, opacity: 1 },
+                        }}
+                        transition={{ duration: 0.6 }}
+                        className="flex gap-4 pt-20"
+                    >
 
-                        <button className="z-10 bg-white border border-gray-300 px-6 py-3 rounded-full text-lg font-semibold shadow hover:shadow-md transition flex items-center gap-2">
+                        <motion.a
+                            href="/meals"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="bg-red-500 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-md hover:bg-red-600 transition"
+                        >
+                            Order Now
+                        </motion.a>
+
+                        <motion.a
+                            href="/meals"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="bg-white border border-gray-300 px-6 py-3 rounded-full text-lg font-semibold shadow hover:shadow-md transition flex items-center gap-2"
+                        >
                             <FaPlay className="text-red-500" /> Order Process
-                        </button>
-                    </div>
-                </div>
+                        </motion.a>
+                    </motion.div>
+                </motion.div>
 
                 {/* RIGHT IMAGE SECTION */}
-                <div className=" relative flex justify-center pr-0 lg:pr-20">
-                    {/* chef image */}
-                    <img
+                <div className="relative justify-center pr-0 lg:pr-20 hidden lg:flex">
+
+                    {/* Chef Image */}
+                    <motion.img
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
                         src="/banner_chef.png"
                         alt="woman holding salad"
-                        className="w-[50%] z-10 "
+                        className="w-[75%] xl:w-[50%] z-10"
                     />
 
-                    {/* Red background shape */}
-                    <div className="absolute bottom-0 z-9 w-95 h-72 bg-red-500 rounded-3xl -z-10" style={{ clipPath: "polygon(0 0, 100% 10%, 100% 100%, 0% 100%)" }}></div>
+                    {/* Background Shape */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="absolute bottom-0 w-95 h-72 bg-red-500 rounded-3xl rounded-tl-none z-0"
+                        style={{
+                            clipPath: "polygon(0 0, 100% 10%, 100% 100%, 0% 100%)",
+                        }}
+                    />
+
 
                     {/* Fresh Orange Card */}
-                    <div className="absolute -top-6 right-4 bg-white shadow-lg rounded-xl p-4 w-40 text-center">
-                        <img src="/banner_Burger.jpg" alt="orange" className="w-16 mx-auto" />
-                        <h4 className="font-semibold text-gray-800 text-sm">Fresh Orange</h4>
-                        <p className="text-gray-600 font-bold">$44.60</p>
-                        <p className="text-gray-400 text-xs">Free Shipping</p>
-                        <button className="mt-2 bg-red-500 w-full py-2 rounded-lg text-white text-sm flex justify-center">
+                    <motion.div
+                        animate={{ y: [0, -8, 0] }}
+                        transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                        className="absolute -top-6 right-4 bg-white shadow-lg rounded-xl p-4 w-40 text-center"
+                    >
+                        <img src="/banner_Burger.jpg" className="w-16 mx-auto" />
+                        <h4 className="font-semibold text-sm">Fresh Orange</h4>
+                        <p className="font-bold">$44.60</p>
+                        <p className="text-xs text-gray-400">Free Shipping</p>
+                        <button className="mt-2 bg-red-500 w-full py-2 rounded-lg text-white flex justify-center">
                             <FaShoppingCart />
                         </button>
-                    </div>
+                    </motion.div>
 
                     {/* Delivery Card */}
-                    <div className="absolute top-100 right-4 bg-white shadow-md rounded-xl p-3 flex items-center gap-3 w-36">
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.5, duration: 0.6 }}
+                        className="hidden xl:flex absolute top-100 right-4 bg-white shadow-md rounded-xl p-3 gap-3 w-36"
+                    >
                         <FaClock className="text-green-500 text-xl" />
                         <div>
-                            <p className="font-semibold text-gray-700 text-sm">Delivery</p>
+                            <p className="font-semibold text-sm">Delivery</p>
                             <p className="text-xs text-gray-400">30 Min</p>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Burger Card */}
-                    <div className=" md: absolute bottom-6 -left-25 bg-white shadow-md rounded-xl p-3 w-48 flex gap-3 items-center">
-                        <img src="/banner_Burger.jpg" alt="burger" className="w-12 h-12 rounded-md" />
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.6, duration: 0.6 }}
+                        className="hidden xl:flex absolute bottom-6 -left-25 bg-white shadow-md rounded-xl p-3 w-48 gap-3 items-center"
+                    >
+                        <img src="/banner_Burger.jpg" className="w-12 h-12 rounded-md" />
                         <div>
-                            <p className="font-semibold text-gray-800 text-sm">American Burger</p>
+                            <p className="font-semibold text-sm">American Burger</p>
                             <p className="text-yellow-500 text-xs">★★★★★</p>
-                            <p className="text-gray-700 text-sm font-bold">8.75</p>
+                            <p className="font-bold">8.75</p>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

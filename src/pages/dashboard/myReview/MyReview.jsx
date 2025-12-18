@@ -59,7 +59,7 @@ const MyReview = () => {
     if (loading || isLoading) return <p ><Loading></Loading></p>;
 
     return (
-        <div className="max-w-6xl  mx-auto p-4 pt-2">
+        <div className=" max-w-7xl  mx-auto p-4 pt-2">
             <h2 className="text-2xl font-bold mb-5 mr-10 text-center">My Reviews</h2>
 
             {reviews.length === 0 ? (
@@ -89,17 +89,17 @@ const MyReview = () => {
                                             {new Date(review.date).toLocaleString()}
                                         </td>
 
-                                        <td className="p-3 border border-pink-50 text-center space-x-2">
+                                        <td className="p-3 md:space-y-1 border border-pink-50 text-center space-x-2">
                                             <button
                                                 onClick={() => setEditingReview(review)}
-                                                className="px-3 py-1 bg-blue-500 text-white rounded"
+                                                className="px-3  bg-blue-500 text-white rounded cursor-pointer"
                                             >
                                                 Update
                                             </button>
 
                                             <button
                                                 onClick={() => handleDelete(review._id)}
-                                                className="px-3 py-1 bg-red-500 text-white rounded"
+                                                className="px-3 md:px-4 md:-ml-2  bg-red-500 text-white cursor-pointer rounded"
                                             >
                                                 Delete
                                             </button>
@@ -150,8 +150,8 @@ const MyReview = () => {
 
             {/* Update Modal */}
             {editingReview && (
-                <div className="fixed inset-0 bg-white bg-opacity-40 flex justify-center items-center">
-                    <div className="bg-indigo-50 p-6 rounded shadow-lg w-96">
+                <div className="fixed inset-0 bg-gray-100 bg-opacity-40 flex justify-center items-center">
+                    <div className="bg-gray-50 p-6 rounded-md shadow-lg w-96">
                         <h2 className="text-xl font-semibold mb-4">Update Review</h2>
 
                         <form onSubmit={handleUpdate}>
@@ -178,14 +178,14 @@ const MyReview = () => {
                                 <button
                                     type="button"
                                     onClick={() => setEditingReview(null)}
-                                    className="px-3 py-1 bg-gray-400 text-white rounded"
+                                    className="px-3 py-1 bg-gray-400 text-white rounded cursor-pointer"
                                 >
                                     Cancel
                                 </button>
 
                                 <button
                                     type="submit"
-                                    className="px-3 py-1 bg-green-600 text-white rounded"
+                                    className="px-3 py-1 bg-green-600 text-white rounded  cursor-pointer"
                                 >
                                     Update
                                 </button>

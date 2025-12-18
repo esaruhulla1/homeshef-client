@@ -60,7 +60,7 @@ const OrderRequests = () => {
     }
 
     return (
-        <div className="max-w-6xl mx-auto p-6">
+        <div className="max-w-7xl mx-auto p-6">
             <h2 className="text-2xl font-bold mb-6">Order Requests</h2>
 
             <div className="space-y-4">
@@ -93,7 +93,7 @@ const OrderRequests = () => {
                                     onClick={() =>
                                         handleStatus(_id, 'cancelled', 'Cancel this order?')
                                     }
-                                    className="btn btn-sm btn-error"
+                                    className="btn btn-xs btn-error border-0 bg-red-500 rounded-sm"
                                 >
                                     Cancel
                                 </button>
@@ -103,7 +103,7 @@ const OrderRequests = () => {
                                     onClick={() =>
                                         handleStatus(_id, 'accepted', 'Accept this order?')
                                     }
-                                    className="btn btn-sm btn-success"
+                                    className="btn btn-xs btn-success border-0 bg-green-400 rounded-sm"
                                 >
                                     Accept
                                 </button>
@@ -113,7 +113,7 @@ const OrderRequests = () => {
                                     onClick={() =>
                                         handleStatus(_id, 'delivered', 'Mark as delivered?')
                                     }
-                                    className="btn btn-sm btn-primary"
+                                    className="btn btn-xs btn-primary border-0 bg-green-500 rounded-sm"
                                 >
                                     Deliver
                                 </button>

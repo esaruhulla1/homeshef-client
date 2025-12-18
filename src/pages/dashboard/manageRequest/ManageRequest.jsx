@@ -44,7 +44,7 @@ const ManageRequest = () => {
     }
 
     return (
-        <div className="p-6">
+        <div className="p-6 max-w-7xl mx-auto">
             <h2 className="text-2xl font-bold mb-6">Manage Requests</h2>
 
             <div className="overflow-x-auto">
@@ -70,7 +70,7 @@ const ManageRequest = () => {
                                 <td>
                                     {new Date(req.requestTime).toLocaleString()}
                                 </td>
-                                <td className="space-x-2">
+                                <td className="space-x-2  space-y-2 lg:space-y-0   ">
                                     <button
                                         disabled={req.requestStatus !== 'pending'}
                                         onClick={() =>
@@ -82,7 +82,7 @@ const ManageRequest = () => {
                                                 }
                                             })
                                         }
-                                        className="btn btn-sm btn-success"
+                                        className="btn btn-xs btn-success border-0 bg-green-500 rounded-sm"
                                     >
                                         Accept
                                     </button>
@@ -90,7 +90,7 @@ const ManageRequest = () => {
                                     <button
                                         disabled={req.requestStatus !== 'pending'}
                                         onClick={() => rejectMutation.mutate(req._id)}
-                                        className="btn btn-sm btn-error"
+                                        className="btn btn-xs btn-error border-0 bg-red-500 rounded-sm"
                                     >
                                         Reject
                                     </button>

@@ -161,9 +161,9 @@ const MealsDetails = () => {
 
                         <button
                             onClick={handleAddToFavorite}
-                            className="mt- flex-1 bg-cyan-500 text-white py-2 px-6 rounded-xl"
+                            className="mt- flex-1 bg-red-500 text-white py-2 px-6 rounded-xl"
                         >
-                            ❤️ Add to Favorite
+                             Add to Favorite
                         </button>
                     </div>
 
@@ -176,7 +176,8 @@ const MealsDetails = () => {
             <div className="mt-14">
                 <h2 className="text-2xl font-bold mb-5">Customer Reviews</h2>
 
-                {reviewLoading && <p className="text-gray-500"><Loading></Loading></p>}
+                {/* {reviewLoading && <p className="text-gray-500"><Loading></Loading></p>} */}
+                {reviewLoading && <p className="text-gray-500">Loading...</p>}
 
                 {!reviewLoading && (!reviews || reviews.length === 0) && (
                     <p className="text-gray-500">No reviews yet.</p>

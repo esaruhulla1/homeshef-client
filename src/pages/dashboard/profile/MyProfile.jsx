@@ -123,7 +123,7 @@ export default function MyProfile() {
                         {userData.role !== "chef" && userData.role !== "admin" && (
                             <button
                                 onClick={() => handleRequest("chef")}
-                                className="px-6 py-3 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
+                                className="px-6 py-3 rounded-full bg-green-500 text-white font-semibold hover:bg-green-600 transition"
                             >
                                 Be a Chef
                             </button>
@@ -132,7 +132,7 @@ export default function MyProfile() {
                         {userData.role !== "admin" && (
                             <button
                                 onClick={() => handleRequest("admin")}
-                                className="px-6 py-3 rounded-full border border-gray-700 text-gray-700 font-semibold hover:bg-gray-100 transition"
+                                className="px-6 py-3 rounded-full   border-1 border-red-500  text-gray-700 font-semibold hover:bg-gray-200 transition"
                             >
                                 Be an Admin
                             </button>

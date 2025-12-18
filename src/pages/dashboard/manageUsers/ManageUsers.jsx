@@ -45,7 +45,7 @@ const ManageUsers = () => {
     if (isLoading) return <p><Loading></Loading></p>;
 
     return (
-        <div className="p-6">
+        <div className="max-w-7xl mx-auto p-6">
             <h2 className="text-2xl font-bold mb-4">Manage Users</h2>
 
             <div className="overflow-x-auto">
@@ -85,7 +85,7 @@ const ManageUsers = () => {
                                     {u.role !== "admin" && u.status !== "fraud" && (
                                         <button
                                             onClick={() => handleMakeFraud(u._id)}
-                                            className="btn btn-xs btn-error"
+                                            className="btn btn-xs btn-error border-0 text-white px-3 bg-red-500 rounded-sm"
                                         >
                                             Make Fraud
                                         </button>
@@ -95,7 +95,7 @@ const ManageUsers = () => {
                                     {u.status === "fraud" && (
                                         <button
                                             onClick={() => handleRemoveFraud(u._id)}
-                                            className="btn btn-xs btn-success"
+                                            className="btn btn-xs btn-success text-gray-800 px-1.5 bg-green-500 rounded-sm border-0"
                                         >
                                             Remove Fraud
                                         </button>

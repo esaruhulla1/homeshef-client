@@ -121,7 +121,7 @@ const CreateMeal = () => {
     };
 
     return (
-        <div className="max-w-4xl mx-auto p-6 bg-base-100 rounded-xl shadow">
+        <div className="max-w-5xl mx-auto p-6 bg-base-100 rounded-xl shadow">
             <h2 className="text-2xl font-bold mb-6">Create New Meal</h2>
 
             <form
