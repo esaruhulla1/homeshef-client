@@ -9,8 +9,11 @@ The platform includes features like user registration, food ordering, real-time 
 
 ## Role :
 The system will include three main user roles:
+
 Admin: Has full system access, including managing users, chefs, orders, and platform settings.
+
 Chef:  Can upload menus, manage food items, and handle customer orders.
+
 Normal User (Customer):  Can browse meals, place orders, and leave reviews.
 
 
