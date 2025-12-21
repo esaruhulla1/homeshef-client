@@ -5,6 +5,15 @@ HomeShef is a modern online platform that connects home cooks with people lookin
 For home cooks, it provides an easy way to earn money from their kitchen without needing a physical restaurant. For customers, it offers access to healthy, affordable, homemade meals prepared by local chefs.
 The platform includes features like user registration, food ordering, real-time order tracking, ratings and reviews, and role-based access control. LocalChefBazaar will be built using the MERN stack (MongoDB, Express.js, React, Node.js).
 
+
+
+## Role :
+The system will include three main user roles:
+Admin: Has full system access, including managing users, chefs, orders, and platform settings.
+Chef:  Can upload menus, manage food items, and handle customer orders.
+Normal User (Customer):  Can browse meals, place orders, and leave reviews.
+
+
 ## Features
 
 
